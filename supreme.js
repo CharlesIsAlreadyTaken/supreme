@@ -18,26 +18,42 @@ var config = {
     'expires_month': 'January', // must be full month name to match adidas.com
     'expires_year': '2001', // Year the Credit Card expires
     'security_code': '404', // a 3 or 4 digit CVV code that is on the back of your Credit Card (4 Digits for AMEX on front)
+    'item_names': ['tshirt', 'rosejacket'],
 };
+var primeUrl = 'http://www.supremenewyork.com/shop/new';
 var urlCheck = urlChecker();
 function urlChecker() {
-    console.log('checking page');
-    var primeUrl = 'http://www.supremenewyork.com/shop/new';
     var lastUrl = window.location.href;
 
     window.urlChecker = setInterval(function() {
         console.log(primeUrl);
         console.log(lastUrl);
         if (primeUrl === lastUrl) {
-            console.log('found the right one!');
+            stopUrl();
+            findItem();
         }
-
-        if (lastUrl !== window.location.href) {
-            lastUrl = window.location.href;
-            checkPage();
-        }
+        window.location.href = primeUrl;
     }, 500);
 }
+
+function stopUrl() {
+    clearInterval(window.urlChecker);
+}
+
+function findItem() {
+        var count = Math.floor(Math.random() * $('article').length);
+        var accessUrl = $('article:eq( ' + count + ' )').find('a').attr('href');
+        window.location.href = accessUrl;
+        for (var j in config.item_names) {
+            if ($('h1')[1].text().toLowerCase().includes(config.item_names[j])) {
+                console.log('We got the right item!');
+            } else {
+                console.log('Not the right item');
+                window.location.href = primeUrl;
+            }
+        }
+}
+
 function checkPage() {
     console.log('CHECKING PAGE!');
 
