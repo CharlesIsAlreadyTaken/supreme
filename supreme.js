@@ -1,3 +1,4 @@
+console.log('App works!');
 var config = {
     'first_name': 'Derpington', // Shipping firstname
     'last_name': 'McYeezus', // Shipping surname
