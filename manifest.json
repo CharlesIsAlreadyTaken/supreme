@@ -2,7 +2,7 @@
   "name": "Supreme",
   "description": "Checkout bot",
   "version": "0.1",
-  "manifest_version": 1,
+  "manifest_version": 2,
   "permissions": ["*://*/*"],
   "content_scripts": [
     {
@@ -12,5 +12,5 @@
   ],
   "browser_action": {
     "default_title": "Enable/Disable"
-  },
+  }
 }
