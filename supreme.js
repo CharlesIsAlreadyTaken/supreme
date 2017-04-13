@@ -19,20 +19,25 @@ var config = {
     'expires_year': '2001', // Year the Credit Card expires
     'security_code': '404', // a 3 or 4 digit CVV code that is on the back of your Credit Card (4 Digits for AMEX on front)
 };
-
+var urlCheck = urlChecker();
 function urlChecker() {
-    if (window.urlChecker) return;
-
+    console.log('checking page');
+    var primeUrl = 'http://www.supremenewyork.com/shop/new';
     var lastUrl = window.location.href;
 
     window.urlChecker = setInterval(function() {
+        console.log(primeUrl);
+        console.log(lastUrl);
+        if (primeUrl === lastUrl) {
+            console.log('found the right one!');
+        }
+
         if (lastUrl !== window.location.href) {
             lastUrl = window.location.href;
             checkPage();
         }
     }, 500);
 }
-
 function checkPage() {
     console.log('CHECKING PAGE!');
 
