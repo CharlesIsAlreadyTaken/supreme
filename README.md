@@ -1,2 +1,2 @@
 # supremebot
-Automated checkout bot for Supreme.com
+Automated checkout bot.
